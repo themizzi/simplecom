@@ -10,13 +10,55 @@ A Go-based e-commerce application demonstrating payment integration with Adyen.
 
 ## Prerequisites
 
+### Option 1: Using Dev Container (Recommended)
+
+The easiest way to get started is using the provided dev container, which includes all dependencies pre-installed:
+
+- [Visual Studio Code](https://code.visualstudio.com/) with the [Dev Containers extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+- OR [Dev Container CLI](https://github.com/devcontainers/cli)
+- Docker Desktop or compatible container runtime
+
+### Option 2: Local Setup
+
+If you prefer to run locally without containers:
+
 - Go 1.21 or higher
+- Node.js and npm (for frontend dependencies)
 - PostgreSQL (for integration tests)
 - Adyen API credentials
 
 ## Getting Started
 
-### Environment Setup
+### Using Dev Container (Recommended)
+
+#### With VS Code:
+
+1. Open the project in VS Code
+2. When prompted, click "Reopen in Container" (or run `Dev Containers: Reopen in Container` from the Command Palette)
+3. Wait for the container to build and start
+4. All dependencies are pre-installed and ready to use!
+
+#### With Dev Container CLI:
+
+```bash
+# Install the CLI if you haven't already
+npm install -g @devcontainers/cli
+
+# Open the project in a dev container
+devcontainer up --workspace-folder .
+
+# Execute commands in the container
+devcontainer exec --workspace-folder . make test
+```
+
+The dev container includes:
+- Go 1.21+
+- Node.js and npm
+- Git
+- All required Go tools (gopls, golangci-lint, etc.)
+- Pre-configured environment
+
+### Environment Configuration
 
 Copy the example environment file and configure your settings:
 
