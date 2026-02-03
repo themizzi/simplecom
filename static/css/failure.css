@@ -1,0 +1,149 @@
+/* Failure page styles */
+
+.failure-container {
+    max-width: 800px;
+    margin: 3rem auto;
+    padding: 2rem;
+}
+
+.failure-icon {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.failure-icon svg {
+    width: 80px;
+    height: 80px;
+    fill: #ef4444;
+}
+
+.failure-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.failure-subtitle {
+    text-align: center;
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+}
+
+.error-message-card {
+    background-color: #fee;
+    border: 2px solid #fca5a5;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.error-message-text {
+    color: #991b1b;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.order-info-card {
+    background-color: var(--background);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.order-detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.order-detail-row:last-child {
+    border-bottom: none;
+}
+
+.order-detail-label {
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.order-detail-value {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.order-reference {
+    font-family: monospace;
+    background-color: var(--surface);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.btn {
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--background);
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+    background-color: var(--background);
+    color: var(--text-primary);
+    border: 2px solid var(--border);
+}
+
+.btn-secondary:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+@media (max-width: 768px) {
+    .failure-container {
+        padding: 1rem;
+    }
+
+    .failure-title {
+        font-size: 2rem;
+    }
+
+    .order-detail-row {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}

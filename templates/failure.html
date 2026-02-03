@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Failed - Premium E-Commerce</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/failure.css">
+</head>
+<body>
+    <main class="main">
+        <article class="failure-container">
+            <header>
+                <div class="failure-icon" role="img" aria-label="Error">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                    </svg>
+                </div>
+
+                <h1 class="failure-title">Payment Failed</h1>
+                <p class="failure-subtitle">We were unable to process your payment.</p>
+            </header>
+
+            <section class="error-message-card" role="alert">
+                <p class="error-message-text">{{.Message}}</p>
+            </section>
+
+            {{if .OrderReference}}
+            <section class="order-info-card">
+                <div class="order-detail-row">
+                    <span class="order-detail-label">Order Reference:</span>
+                    <span class="order-detail-value order-reference">{{.OrderReference}}</span>
+                </div>
+                {{if .Reason}}
+                <div class="order-detail-row">
+                    <span class="order-detail-label">Failure Reason:</span>
+                    <span class="order-detail-value">{{.Reason}}</span>
+                </div>
+                {{end}}
+            </section>
+            {{end}}
+
+            <footer class="action-buttons">
+                <nav>
+                    <a href="/checkout" class="btn btn-primary">Try Again</a>
+                    <a href="/" class="btn btn-secondary">Return to Home</a>
+                </nav>
+            </footer>
+        </article>
+    </main>
+</body>
+</html>

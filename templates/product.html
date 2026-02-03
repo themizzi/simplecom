@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Name}} - Premium E-Commerce</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+<body>
+    <main class="main">
+        <div class="container">
+            <article class="product-container">
+                <figure class="product-image">
+                    <img src="{{.ImageURL}}" alt="{{.Name}}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="image-placeholder" style="display: none;" role="img" aria-label="Product placeholder image">
+                        <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="200" height="200" rx="8" fill="#f0f0f0"/>
+                            <path d="M100 60C77.9086 60 60 77.9086 60 100C60 122.091 77.9086 140 100 140C122.091 140 140 122.091 140 100C140 77.9086 122.091 60 100 60Z" fill="#d0d0d0"/>
+                            <circle cx="90" cy="95" r="8" fill="#a0a0a0"/>
+                            <circle cx="110" cy="95" r="8" fill="#a0a0a0"/>
+                            <path d="M85 115C85 115 90 120 100 120C110 120 115 115 115 115" stroke="#a0a0a0" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                </figure>
+                
+                <section class="product-details">
+                    <header>
+                        <h2 class="product-name">{{.Name}}</h2>
+                        <p class="product-description">{{.Description}}</p>
+                    </header>
+                    
+                    <div class="product-price-section">
+                        <data class="product-price" value="{{.Price}}">{{.Price}}</data>
+                        <span class="price-label">Best Price</span>
+                    </div>
+
+                    <button class="buy-button" onclick="window.location.href='/checkout'">
+                        <svg class="button-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <path d="M3 3H4.5L6.5 13H16L18 6H6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <circle cx="7" cy="17" r="1" fill="currentColor"/>
+                            <circle cx="15" cy="17" r="1" fill="currentColor"/>
+                        </svg>
+                        Buy Now
+                    </button>
+                </section>
+            </article>
+        </div>
+    </main>
+</body>
+</html>

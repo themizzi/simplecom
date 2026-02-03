@@ -1,0 +1,216 @@
+/* CSS Variables for theming */
+:root {
+    --primary-color: #0066ff;
+    --primary-hover: #0052cc;
+    --text-primary: #1a1a1a;
+    --text-secondary: #666666;
+    --background: #ffffff;
+    --surface: #f8f9fa;
+    --border: #e0e0e0;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.15);
+    --border-radius: 8px;
+    --transition: all 0.3s ease;
+}
+
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-primary);
+    background-color: var(--surface);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    width: 100%;
+}
+
+/* Main content */
+.main {
+    flex: 1;
+    padding: 3rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+/* Product container - using CSS Grid */
+.product-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    background-color: var(--background);
+    padding: 3rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-md);
+}
+
+/* Product image section */
+.product-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--surface);
+    border-radius: var(--border-radius);
+    padding: 2rem;
+    min-height: 400px;
+}
+
+.product-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+}
+
+.image-placeholder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Product details section */
+.product-details {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.product-name {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+.product-description {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+/* Price section */
+.product-price-section {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.product-price {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.price-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    background-color: var(--surface);
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+}
+
+/* Buy button */
+.buy-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    background-color: var(--primary-color);
+    color: var(--background);
+    border: none;
+    padding: 1rem 2.5rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: var(--shadow-md);
+}
+
+.buy-button:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.buy-button:active {
+    transform: translateY(0);
+}
+
+.button-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .product-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        padding: 2rem 1.5rem;
+    }
+
+    .product-name {
+        font-size: 2rem;
+    }
+
+    .product-price {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .product-name {
+        font-size: 1.75rem;
+    }
+
+    .product-description {
+        font-size: 1rem;
+    }
+
+    .product-price {
+        font-size: 2rem;
+    }
+
+    .buy-button {
+        padding: 0.875rem 2rem;
+        font-size: 1rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.product-container {
+    animation: fadeIn 0.5s ease-out;
+}

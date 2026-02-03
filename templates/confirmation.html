@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmed - Premium E-Commerce</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/confirmation.css">
+</head>
+<body>
+    <main class="main">
+        <article class="confirmation-container">
+            <header>
+                <div class="success-icon" role="img" aria-label="Success">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                </div>
+
+                <h1 class="confirmation-title">Order Confirmed!</h1>
+                <p class="confirmation-subtitle">Thank you for your purchase. Your order has been successfully processed.</p>
+            </header>
+
+            <section class="order-details-card">
+                <div class="order-detail-row">
+                    <span class="order-detail-label">Order Reference:</span>
+                    <span class="order-detail-value order-reference">{{.Order.Reference}}</span>
+                </div>
+                <div class="order-detail-row">
+                    <span class="order-detail-label">Payment Status:</span>
+                    <span class="order-detail-value">
+                        <span class="status-badge status-authorized">{{.Status}}</span>
+                    </span>
+                </div>
+                {{if .Order.PSPReference}}
+                <div class="order-detail-row">
+                    <span class="order-detail-label">Payment Reference:</span>
+                    <span class="order-detail-value order-reference">{{.Order.PSPReference}}</span>
+                </div>
+                {{end}}
+                <div class="order-detail-row">
+                    <span class="order-detail-label">Order Date:</span>
+                    <span class="order-detail-value">{{.Order.CreatedAt.Format "January 2, 2006 at 3:04 PM"}}</span>
+                </div>
+            </section>
+
+            <section>
+                <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">Order Summary</h2>
+                <div class="product-summary">
+                    <div class="product-name">{{.Order.ProductName}}</div>
+                    <div class="product-amount">${{printf "%.2f" (divf .Order.Amount 100)}}</div>
+                </div>
+            </section>
+
+            <footer class="action-buttons">
+                <a href="/" class="btn btn-primary">Return to Home</a>
+            </footer>
+        </article>
+    </main>
+</body>
+</html>

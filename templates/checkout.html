@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Premium E-Commerce</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/checkout.css">
+    <link rel="stylesheet" href="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/5.66.0/adyen.css" />
+    <script src="https://checkoutshopper-test.adyen.com/checkoutshopper/sdk/5.66.0/adyen.js"></script>
+</head>
+<body>
+    <main class="main">
+        <div class="checkout-container">
+            <aside class="order-summary">
+                <h2>Order Summary</h2>
+                <article class="order-item">
+                    <div class="order-item-details">
+                        <h3>{{.Product.Name}}</h3>
+                        <p>{{.Product.Description}}</p>
+                    </div>
+                    <div class="order-item-price">{{.Product.Price}}</div>
+                </article>
+                <div class="order-total">
+                    <span>Total:</span>
+                    <span>{{.Product.Price}}</span>
+                </div>
+            </aside>
+
+            <section class="payment-section">
+                <h2>Payment Details</h2>
+                <div id="error-container" class="error-message" role="alert" aria-live="polite"></div>
+                <div id="loading-container" class="loading-message" role="status" aria-live="polite">Loading payment methods...</div>
+                <div id="dropin-container"></div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // Pass server-side data to JavaScript
+        window.ADYEN_CLIENT_KEY = "{{.ClientKey}}";
+    </script>
+    <script src="/static/js/checkout.js"></script>
+</body>
+</html>
