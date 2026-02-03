@@ -116,7 +116,7 @@ Feature: Order Confirmation After Payment
 
 2. **Create order model and repository** — Define [internal/models/order.go](../../internal/models/order.go) with `Order` struct (ID, Reference, Amount, Currency, Status, ProductName, PSPReference, CreatedAt, UpdatedAt), implement [internal/repository/order_repo.go](../../internal/repository/order_repo.go) with methods: `CreateOrder(*Order) error`, `GetOrderByReference(string) (*Order, error)`, `UpdateOrderStatus(reference, status, pspReference string) error`
 
-3. **Initialize database on server startup** — Update [cmd/server/main.go](../../cmd/server/main.go) to call `database.Connect()` on startup, run `database.RunMigrations()`, create `OrderRepository` instance, pass repository to handlers that need it, implement graceful shutdown with `defer db.Close()`
+3. **Initialize database on server startup** — Update [cmd/server/main.go] to call `database.Connect()` on startup, run `database.RunMigrations()`, create `OrderRepository` instance, pass repository to handlers that need it, implement graceful shutdown with `defer db.Close()`
 
 4. **Update session handler to create orders** — Modify [internal/handlers/session.go](../../internal/handlers/session.go) to accept `OrderRepository` dependency, before calling Adyen Sessions API create order in database with status "pending" and same reference as used for Adyen (line 92 currently generates reference), handle database errors gracefully and return error to client if order creation fails
 
@@ -128,7 +128,7 @@ Feature: Order Confirmation After Payment
 
 8. **Create failure handler and template** — Implement [internal/handlers/failure.go](../../internal/handlers/failure.go) extracting `reference` and `reason` from query parameters, optionally retrieve order from database for display, render [templates/failure.html](../../templates/failure.html) showing error message based on reason, order reference, and "Try Again" button linking to `/checkout`
 
-9. **Register routes** — Update [cmd/server/main.go](../../cmd/server/main.go) to add routes: `/order/confirmation` (GET) → `ConfirmationHandler`, `/order/failed` (GET) → `FailureHandler`, pass required dependencies (AdyenConfig, OrderRepository) to handlers
+9. **Register routes** — Update [cmd/server/main.go] to add routes: `/order/confirmation` (GET) → `ConfirmationHandler`, `/order/failed` (GET) → `FailureHandler`, pass required dependencies (AdyenConfig, OrderRepository) to handlers
 
 10. **Update checkout template** — Modify [templates/checkout.html](../../templates/checkout.html) to remove `alert()` from `onPaymentCompleted` callback (line ~170) since Adyen will handle redirect automatically with configured returnUrl
 
